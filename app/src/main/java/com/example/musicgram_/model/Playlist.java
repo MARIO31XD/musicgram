@@ -10,6 +10,10 @@ public class Playlist {
 
     private ArrayList<Song> songs; // una Playlist tiene varias Songs
 
+    private ArrayList<Comment> comments;  // la PlayList puede tener una lista de comentarios
+
+    private ArrayList<User> likes; // un User puede dar likes a las PlayList
+
     // Constructor donde iniciamos la lista de las canciones
     public Playlist() {
         songs = new ArrayList<>();
