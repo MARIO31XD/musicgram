@@ -11,4 +11,6 @@ public class Album {
 
     private ArrayList<Song> songs;  // un Album tiene muchas canciones
 
+    private ArrayList<Artist> artists; // un album es de 1 Artista minimo
+
 }
