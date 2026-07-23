@@ -1,11 +1,25 @@
 # Musicgram
-Project about mix of Spotify and Instagram in a single app v.1
+Es un proyecto Android inspirado en Spotify y Instagram, todo en una sola app (v.1)
+
+### Tecnologias utilizadas:
+- Java
+- Android Studio
+- Git
+- Github
+
+
+### Project Status
+1. Modelo de datos [ x ]
+2. Lógica de negocio [ ]
+3. Interfaz de usuario [ ]
+4. Base de datos [ ]
+5. Backend [ ]
 
 
 
--Objetivos básicos
+-Objetivos básicos de la app
 
-1. Pantalla de inicio donde poder Registrarse (con google) o iniciar sesión.
+1. Pantalla de inicio donde poder Registrarse o iniciar sesión (con google) .
 2. Escuchar canciones.
 3. Crear Playlists
 4. Compartir PlayLists

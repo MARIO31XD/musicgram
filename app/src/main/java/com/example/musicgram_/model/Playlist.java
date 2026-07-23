@@ -111,9 +111,42 @@ public class Playlist {
         this.likes = likes;
     }
 
+
+    // Metodo para añadir canciones a las Playlists
+    public void addSong(Song song) {
+        songs.add(song);
+
+    }
+
+    // eliminar canciones de las Playlists
+    public void removeSong(Song song) {
+        songs.remove(song);
+
+    }
+
+    // Añadir y eliminar comentarios
+    public void addComment(Comment comment) {
+        comments.add(comment);
+
+
+    }
+    public void removeComment(Comment comment) {
+          comments.remove(comment);
+    }
+
+    // Likes para las Playlists
+    public void addLike(User user) {
+        likes.add(user);
+
+    }
+
+    public void removeLike(User user) {
+        likes.remove(user);
+    }
+
+
+
     // ToString
-
-
     @Override
     public String toString() {
         return "Playlist{" +

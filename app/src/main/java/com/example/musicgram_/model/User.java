@@ -131,6 +131,32 @@ public class User {
         this.followers = followers;
     }
 
+
+    // METODOS DEL USUARIO para añadir playlists
+    public void addPlaylist(Playlist playlist) {
+        playlists.add(playlist);
+    }
+    public void removePlaylist(Playlist playlist) {
+        playlists.remove(playlist);
+    }
+
+    // following users
+    public void followUser(User user) {
+        following.add(user);
+    }
+    public void unfollowUser(User user) {
+        following.remove(user);
+    }
+
+    // followers
+    public void addFollower(User user) {
+        followers.add(user);
+    }
+    public void removeFollower(User user) {
+        followers.remove(user);
+    }
+    
+
     // ToString
     @Override
     public String toString() {
