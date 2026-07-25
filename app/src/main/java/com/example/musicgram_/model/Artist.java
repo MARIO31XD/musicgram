@@ -77,6 +77,23 @@ public class Artist {
         this.songs = songs;
     }
 
+    // Añadir/eliminar albums y songs
+    public void addAlbum(Album album) {
+        albums.add(album);
+    }
+    public void removeAlbum(Album album) {
+       albums.remove(album);
+
+    }
+    public void addSong(Song song) {
+        songs.add(song);
+    }
+    public void removeSong(Song song) {
+        songs.remove(song);
+    }
+
+
+
     // ToString
     @Override
     public String toString() {

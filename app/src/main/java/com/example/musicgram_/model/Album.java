@@ -80,6 +80,14 @@ public class Album {
         this.songs = songs;
     }
 
+    // Album contiene songs
+    public void addSong(Song song) {
+        songs.add(song);
+    }
+    public void removeSong(Song song) {
+        songs.remove(song);
+    }
+
     @Override
     public String toString() {
         return "Album{" +
