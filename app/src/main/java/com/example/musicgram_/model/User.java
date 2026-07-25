@@ -150,7 +150,7 @@ public class User {
 
     // followers
     public void addFollower(User user) {
-        followers.add(user);
+        followers.add(user); //añadir follower
     }
     public void removeFollower(User user) {
         followers.remove(user);
