@@ -93,10 +93,10 @@ public class Album {
         return "Album{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
-                ", artist=" + artist +
+                ", artist=" + (artist != null ? artist.getName() : "Sin artista") +
                 ", coverImage='" + coverImage + '\'' +
                 ", releaseYear=" + releaseYear +
-                ", songs=" + songs +
+                ", songs=" + songs.size() +
                 '}';
     }
 }

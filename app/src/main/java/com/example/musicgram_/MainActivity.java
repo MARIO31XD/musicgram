@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         faith.setAlbum(afterHours);
 
         afterHours.addSong(faith); // añadir cancion al Album After Hours
-
+        theWeeknd.addSong(faith); // añadir song al Artist
         // Crear User
         User mario = new User();
         mario.setUsername("Mario"); // UserName
@@ -56,13 +56,23 @@ public class MainActivity extends AppCompatActivity {
         playlistXO.setTitle("Mi playlist de theweeknd"); // titulo de la playlist
         playlistXO.setOwner(mario); // dueño de la playlist (en este caso el User que hemos creado)
 
+        playlistXO.addSong(faith); // añadir la Song a la playlist
         mario.addPlaylist(playlistXO); // addPlaylist al User mario
 
+
+        // LOGS
         // mostrar por los Logs el User
         Log.d("Musicgram" , mario.toString());
 
         // imprimir el artista
         Log.d("Musicgram" , theWeeknd.toString());
+
+        Log.d("Musicgram" , afterHours.toString());
+        Log.d("Musicgram" , faith.toString());
+
+        Log.d("Musicgram" , playlistXO.toString());
+
+
 
 
 

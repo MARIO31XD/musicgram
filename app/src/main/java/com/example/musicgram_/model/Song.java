@@ -73,8 +73,8 @@ public class Song {
         return "Song{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
-                ", artist=" + artist +
-                ", album=" + album +
+                ", artist=" + (artist != null ? artist.getName() : "Sin artista") +  //una Song tiene que tener un Artist
+                ", album=" +  (album != null ? album.getTitle() : "Sin álbum")   +  // y un Album debe tener Songs
                 ", duration=" + duration +
                 ", audioUrl='" + audioUrl + '\'' +
                 '}';

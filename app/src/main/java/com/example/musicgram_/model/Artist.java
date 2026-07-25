@@ -103,8 +103,8 @@ public class Artist {
                 ", name='" + name + '\'' +
                 ", biography='" + biography + '\'' +
                 ", image='" + image + '\'' +
-                ", albums=" + albums +
-                ", songs=" + songs +
+                ", albums=" + albums.size() +
+                ", songs=" + songs.size() +
                 '}';
     }
 }

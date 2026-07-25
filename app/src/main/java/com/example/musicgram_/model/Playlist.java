@@ -153,7 +153,7 @@ public class Playlist {
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", owner=" + owner +
+                ", owner=" + (owner != null ? owner.getUsername() : "Sin propietario")  + // 1 Playlist tiene 1 propietario
                 ", coverImage='" + coverImage + '\'' +
                 ", isPublic=" + isPublic +
                 ", songs=" + songs +
