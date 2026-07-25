@@ -77,6 +77,7 @@ public class Artist {
         this.songs = songs;
     }
 
+
     // Añadir/eliminar albums y songs
     public void addAlbum(Album album) {
         albums.add(album);
