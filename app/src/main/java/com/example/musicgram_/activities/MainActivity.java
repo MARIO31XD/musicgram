@@ -1,14 +1,12 @@
-package com.example.musicgram_;
+package com.example.musicgram_.activities;
 
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+import com.example.musicgram_.R;
 import com.example.musicgram_.model.Album;
 import com.example.musicgram_.model.Artist;  // importar la clase Artist que está en la carpeta Model
 import com.example.musicgram_.model.Playlist;
