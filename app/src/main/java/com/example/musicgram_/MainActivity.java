@@ -14,7 +14,7 @@ import com.example.musicgram_.model.Artist;  // importar la clase Artist que est
 import com.example.musicgram_.model.Playlist;
 import com.example.musicgram_.model.Song;
 import com.example.musicgram_.model.User;
-
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,8 +22,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("LA APP HA ARRANCADO");
+
+        Toast.makeText(this, "MainActivity iniciada", Toast.LENGTH_LONG).show();
+
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+
 
         // Crear artista
         Artist theWeeknd = new Artist();
@@ -71,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Musicgram" , faith.toString());
 
         Log.d("Musicgram" , playlistXO.toString());
-
 
 
 
