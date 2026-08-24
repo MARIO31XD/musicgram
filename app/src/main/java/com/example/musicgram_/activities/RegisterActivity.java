@@ -1,6 +1,7 @@
 package com.example.musicgram_.activities;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -11,6 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.musicgram_.R;
+import com.example.musicgram_.model.User;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -26,19 +28,44 @@ public class RegisterActivity extends AppCompatActivity {
         EditText etPassword = findViewById(R.id.etPassword);
         EditText etConfirmPassword = findViewById(R.id.etConfirmPassword);
 
+        Button btnRegister = findViewById(R.id.btnRegister); // boton de registrarse
 
-        String username = etUsername.getText().toString();
-        String email = etEmail.getText().toString();
-        String password = etPassword.getText().toString();
-        String confirmPassword = etConfirmPassword.getText().toString();
+        btnRegister.setOnClickListener(v -> {
 
-        // validaciones
-        if (username.isEmpty()) {
-            Toast.makeText(this, "Introduce tu Nombre de Usuario", Toast.LENGTH_SHORT).show();
-        }
-         else if (email.isEmpty()) {
-            Toast.makeText(this, "Introduce tu Email", Toast.LENGTH_SHORT).show();
-        }
+            String username = etUsername.getText().toString();
+            String email = etEmail.getText().toString();
+            String password = etPassword.getText().toString();
+            String confirmPassword = etConfirmPassword.getText().toString();
+
+            // validaciones
+            if (username.isEmpty()) {
+                Toast.makeText(this, "Introduce tu Nombre de Usuario", Toast.LENGTH_SHORT).show();
+            }
+            else if (email.isEmpty()) {
+                Toast.makeText(this, "Introduce tu Email", Toast.LENGTH_SHORT).show();
+            }
+            else if(password.isEmpty()) {
+                Toast.makeText(this, "Introduce tu contraseña", Toast.LENGTH_SHORT).show();
+
+            }
+            else if(confirmPassword.isEmpty()) {
+                Toast.makeText(this, "Repite tu contraseña", Toast.LENGTH_SHORT).show();
+            }
+            else if(!password.equals(confirmPassword)) {
+                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                // crear objeto User con los datos que rellenará del formulario
+                User user = new User();
+                user.setUsername(username); // username del user
+                user.setEmail(email); // email del user
+                user.setPassword(password); // password del user
+                Toast.makeText(this, "Registro correcto", Toast.LENGTH_SHORT).show(); // registro correcto
+
+            }
+
+
+        });
 
 
 
