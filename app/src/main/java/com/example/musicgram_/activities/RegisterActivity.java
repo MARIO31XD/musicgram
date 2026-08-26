@@ -1,6 +1,7 @@
 package com.example.musicgram_.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -10,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
+import android.content.Intent;
 import com.example.musicgram_.R;
 import com.example.musicgram_.model.User;
 
@@ -60,7 +61,14 @@ public class RegisterActivity extends AppCompatActivity {
                 user.setUsername(username); // username del user
                 user.setEmail(email); // email del user
                 user.setPassword(password); // password del user
+                Log.d("Musicgram", user.toString()); // log de prueba
                 Toast.makeText(this, "Registro correcto", Toast.LENGTH_SHORT).show(); // registro correcto
+
+                // pasa de la pantalla de Register para ir a la pantalla de Login después de crear un User
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent); // iniciar actividad abre el Login
+                finish(); // cierra RegisterActivity
+
 
             }
 
