@@ -14,6 +14,8 @@ import androidx.core.view.WindowInsetsCompat;
 import android.content.Intent;
 import com.example.musicgram_.R;
 import com.example.musicgram_.model.User;
+import android.content.SharedPreferences;
+
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -62,6 +64,15 @@ public class RegisterActivity extends AppCompatActivity {
                 user.setEmail(email); // email del user
                 user.setPassword(password); // password del user
                 Log.d("Musicgram", user.toString()); // log de prueba
+
+                SharedPreferences preferences = getSharedPreferences("MusicgramPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                // meter los datos en las Preferences
+                editor.putString("username", username);
+                editor.putString("email", email);
+                editor.putString("password", password);
+                editor.apply(); // aplicar las preferencias
+
                 Toast.makeText(this, "Registro correcto", Toast.LENGTH_SHORT).show(); // registro correcto
 
                 // pasa de la pantalla de Register para ir a la pantalla de Login después de crear un User
