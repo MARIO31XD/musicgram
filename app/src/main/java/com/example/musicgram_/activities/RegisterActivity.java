@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                 user.setPassword(password); // password del user
                 Log.d("Musicgram", user.toString()); // log de prueba
 
-                // Preferencias
+                // Preferencias METE LOS DATOS
                 SharedPreferences preferences = getSharedPreferences("MusicgramPrefs", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 // meter los datos en las Preferences

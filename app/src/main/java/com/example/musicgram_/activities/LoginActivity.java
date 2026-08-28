@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login); // activity_login.xml es la interfaz donde podremos hacer login
 
+        // PREFERENCES (recoge los datos
         SharedPreferences preferences = getSharedPreferences("MusicgramPrefs", MODE_PRIVATE);
         // fields of form
         Button btnLogin = findViewById(R.id.btnLogin); // boton para hacer Login y iniciar sesión
@@ -56,6 +57,10 @@ public class LoginActivity extends AppCompatActivity {
                 if (email.equals(savedEmail) && password.equals(savedPassword)) {
 
                     Toast.makeText(this, "Login correcto", Toast.LENGTH_SHORT).show();
+                    // Intent donde una vez hayamos hecho Login nos lleve a la HomeActivity
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(intent); // inicia el intent
+                    finish(); // finaliza el LoginActivity y asi no puedes volver
 
                 } else {
 
