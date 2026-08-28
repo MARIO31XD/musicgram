@@ -1,6 +1,7 @@
 package com.example.musicgram_.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -23,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login); // activity_login.xml es la interfaz donde podremos hacer login
 
+        SharedPreferences preferences = getSharedPreferences("MusicgramPrefs", MODE_PRIVATE);
         // fields of form
         Button btnLogin = findViewById(R.id.btnLogin); // boton para hacer Login y iniciar sesión
 
@@ -31,22 +33,36 @@ public class LoginActivity extends AppCompatActivity {
 
         TextView txtRegister = findViewById(R.id.txtRegister); // TextView Register que si tocamos nos lleva a la Register Activity
 
-        // Logica cuando hagamos Click en el btnLogin
-        btnLogin.setOnClickListener(v ->{
 
-          String email = etEmail.getText().toString(); // cogemos los datos de los Strings
-          String password = etPassword.getText().toString(); // tanto del email como del password
+        btnLogin.setOnClickListener(v -> {
 
-            // if el email está vacio // y la contraseña // SINO HACES EL LOGIN CORRECTAMENTE
-        if(email.isEmpty()) {
-            Toast.makeText(this, "Introduce tu correo electrónico", Toast.LENGTH_SHORT).show();
+            String email = etEmail.getText().toString(); // coge los datos del email
+            String password = etPassword.getText().toString(); // coge los datos del password
 
-        } else if(password.isEmpty()) {
-            Toast.makeText(this,"Introduce tu contraseña", Toast.LENGTH_SHORT).show();
-        } else{
-             Toast.makeText(this, "Login correcto", Toast.LENGTH_SHORT).show();
+            // Validaciones
+            if (email.isEmpty()) {
+
+                Toast.makeText(this, "Introduce tu correo electrónico", Toast.LENGTH_SHORT).show();
+
+            } else if (password.isEmpty()) {
+                Toast.makeText(this, "Introduce tu contraseña", Toast.LENGTH_SHORT).show();
+
+            } else {
+
+                String savedEmail = preferences.getString("email", "");
+                String savedPassword = preferences.getString("password", "");
+
+                // Si el email y la password coinciden
+                if (email.equals(savedEmail) && password.equals(savedPassword)) {
+
+                    Toast.makeText(this, "Login correcto", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    Toast.makeText(this, "Email y/o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+
+                }
             }
-
         });
 
         // textview para ir a la pantalla de Register
