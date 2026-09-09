@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
+import android.view.View;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -22,6 +22,19 @@ public class HomeActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home);
 
+        // codigo para mejorar la View para que no esté debajo de la barra de estado ni navegación
+        View root = findViewById(R.id.homeRoot); // view de la Home
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+                    Insets systemBars = insets.getInsets(
+                            WindowInsetsCompat.Type.systemBars()
+                    );
+                    v.setPadding(0,
+                            systemBars.top,
+                            0,
+                            systemBars.bottom);
+
+                    return insets;
+                });
         // new LinearLayout
         LinearLayout navSearch = findViewById(R.id.navSearch);
         LinearLayout navProfile = findViewById(R.id.navProfile);
