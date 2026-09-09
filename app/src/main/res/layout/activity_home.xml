@@ -129,28 +129,77 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="#FFFFFF"
+        android:elevation="8dp">
 
-        <Button
-            android:id="@+id/btnHome"
+        <!-- Home -->
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Inicio"/>
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnSearch"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⌂"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inicio"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <!-- Buscar -->
+        <LinearLayout
+            android:id="@+id/navSearch"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Buscar"/>
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnProfile"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⌕"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buscar"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+
+        <!-- Perfil -->
+        <LinearLayout
+            android:id="@+id/navProfile"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Perfil"/>
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="●"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Perfil"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

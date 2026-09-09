@@ -10,6 +10,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import android.content.Intent;
 import android.widget.Button;
+import android.widget.LinearLayout;
+
 import com.example.musicgram_.R;
 
 public class HomeActivity extends AppCompatActivity {
@@ -20,21 +22,20 @@ public class HomeActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home);
 
-        // BUTTONS DEL XML
-        Button btnHome = findViewById(R.id.btnHome);
-        Button btnSearch = findViewById(R.id.btnSearch);
-        Button btnProfile = findViewById(R.id.btnProfile);
+        // new LinearLayout
+        LinearLayout navSearch = findViewById(R.id.navSearch);
+        LinearLayout navProfile = findViewById(R.id.navProfile);
 
-        // BUTTON SEARCH cuando se haga click abrirá el SearchActivity
-        btnSearch.setOnClickListener(v -> {
+        //  SEARCH cuando se haga click abrirá el SearchActivity
+        navSearch.setOnClickListener(v -> {
             // para abrir la SearchActivity
             Intent intent = new Intent(HomeActivity.this, SearchActivity.class);
             startActivity(intent);
 
         });
 
-        // BUTTON PROFILE PARA CUANDO SE HAGA CLICK
-        btnProfile.setOnClickListener(v -> {
+        // PROFILE PARA CUANDO SE HAGA CLICK
+        navProfile.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
             startActivity(intent);
 
