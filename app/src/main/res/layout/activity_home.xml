@@ -59,6 +59,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+                  
+                    <!-- LINEAR vertical PLAYLIST 1-->
+                    <LinearLayout
+                        android:id="@+id/playlistAfterHours"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="12dp">
 
                     <!-- PLAYLIST 1 -->
                     <ImageView
@@ -69,21 +77,64 @@
                         android:background="@drawable/playlist_background"
                         android:layout_marginEnd="12dp"/>
 
-                    <ImageView
-                        android:layout_width="140dp"
-                        android:layout_height="140dp"
-                        android:src="@drawable/ari"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/playlist_background"
-                        android:layout_marginEnd="12dp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="After Hours"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="8dp"/>
 
-                    <ImageView
+                    </LinearLayout>
+
+
+                    <!-- LINEAR  verticalPLAYLIST 2-->
+                    <LinearLayout
                         android:layout_width="140dp"
-                        android:layout_height="140dp"
-                        android:src="@drawable/strokes"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/playlist_background"
-                        android:layout_marginEnd="12dp"/>
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="12dp">
+
+                        <ImageView
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:src="@drawable/ari"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/playlist_background"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Sweetener"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="8dp"/>
+
+                    </LinearLayout>
+
+                    <!-- LINEAR PLAYLIST 3-->
+                    <LinearLayout
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="12dp">
+
+                        <ImageView
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:src="@drawable/strokes"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/playlist_background"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="The New Abnormal"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="8dp"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -99,29 +150,80 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="12dp"/>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:gravity="center_vertical"
-                android:text="The Weeknd"
-                android:textSize="18sp"
-                android:padding="12dp"/>
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:gravity="center_vertical"
-                android:text="The Strokes"
-                android:textSize="18sp"
-                android:padding="12dp"/>
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/weeknd"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_image"
+                    android:clipToOutline="true"
+                    />
 
-            <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The Weeknd"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="16dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:gravity="center_vertical"
-                android:text="Ariana Grande"
-                android:textSize="18sp"
-                android:padding="12dp"/>
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ariana"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_image"
+                    android:clipToOutline="true"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ariana Grande"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="16dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/thestrokes"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_image"
+                    android:clipToOutline="true"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The Strokes"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="16dp"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

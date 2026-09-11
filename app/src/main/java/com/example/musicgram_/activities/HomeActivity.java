@@ -54,5 +54,14 @@ public class HomeActivity extends AppCompatActivity {
 
         });
 
+        // Para abrir la playlist de After Hours
+        LinearLayout playlistAfterHours = findViewById(R.id.playlistAfterHours);
+        playlistAfterHours.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, PlaylistActivity.class);
+            startActivity(intent);
+        });
+
+
+
     }
 }
