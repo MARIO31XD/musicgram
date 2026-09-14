@@ -7,4 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".activities.ArtistActivity">
 
+    <TextView
+        android:id="@+id/txtArtistName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

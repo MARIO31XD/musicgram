@@ -90,6 +90,7 @@
 
                     <!-- LINEAR  verticalPLAYLIST 2-->
                     <LinearLayout
+                        android:id="@+id/playlistSweetener"
                         android:layout_width="140dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -114,6 +115,7 @@
 
                     <!-- LINEAR PLAYLIST 3-->
                     <LinearLayout
+                        android:id="@+id/playlistTheNewAbnormal"
                         android:layout_width="140dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -151,6 +153,7 @@
                 android:layout_marginBottom="12dp"/>
 
             <LinearLayout
+                android:id="@+id/artistweeknd"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:orientation="horizontal"
@@ -176,6 +179,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/artistAriana"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:orientation="horizontal"
@@ -201,6 +205,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/artistStrokes"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:orientation="horizontal"

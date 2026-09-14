@@ -54,12 +54,54 @@ public class HomeActivity extends AppCompatActivity {
 
         });
 
-        // Para abrir la playlist de After Hours
+        // Para abrir la playlist de After Hours (PlaylistActivity)
         LinearLayout playlistAfterHours = findViewById(R.id.playlistAfterHours);
         playlistAfterHours.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, PlaylistActivity.class);
             startActivity(intent);
         });
+
+        // abrir playlist Sweetener (PlaylistActivity)
+        LinearLayout playlistSweetener = findViewById(R.id.playlistSweetener);
+        playlistSweetener.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, PlaylistActivity.class);
+            startActivity(intent);
+        });
+
+        // abrir playlist The New Abnormal (PlaylistActivity)
+        LinearLayout playlistTheNewAbnormal = findViewById(R.id.playlistTheNewAbnormal);
+        playlistTheNewAbnormal.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, PlaylistActivity.class);
+            startActivity(intent);
+        });
+
+
+        // Abrir ArtistActivity
+        LinearLayout artistweeknd = findViewById(R.id.artistweeknd); //(theweeknd)
+        LinearLayout artistAriana = findViewById(R.id.artistAriana); // (ariana)
+        LinearLayout artistStrokes = findViewById(R.id.artistStrokes); // (strokes)
+
+
+        artistweeknd.setOnClickListener(v-> {
+            Intent intent = new Intent(HomeActivity.this, ArtistActivity.class);
+            intent.putExtra("artist" , "The Weeknd"); // enviar dato con un valor(the weeknd)
+            startActivity(intent);
+        });
+
+        artistAriana.setOnClickListener(v-> {
+            Intent intent = new Intent(HomeActivity.this, ArtistActivity.class);
+            intent.putExtra("artist" , "Ariana Grande"); // enviar dato con un valor(Ariana)
+            startActivity(intent);
+        });
+
+        artistStrokes.setOnClickListener(v-> {
+            Intent intent = new Intent(HomeActivity.this, ArtistActivity.class);
+            intent.putExtra("artist", "The Strokes"); // enviar dato con un valor(The strokes)
+            startActivity(intent);
+        });
+
+
+
 
 
 
