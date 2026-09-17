@@ -112,6 +112,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:id="@+id/album1"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -134,6 +135,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/album2"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">

@@ -1,7 +1,9 @@
 package com.example.musicgram_.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -40,7 +42,25 @@ public class ArtistActivity extends AppCompatActivity {
         TextView txtAlbum1 = findViewById(R.id.txtAlbum1);
         TextView txtAlbum2 = findViewById(R.id.txtAlbum2);
 
+        LinearLayout album1 = findViewById(R.id.album1);
+        LinearLayout album2 = findViewById(R.id.album2);
+
         txtArtistName.setText(artistName);
+
+        // ALBUMS PULSABLES (abre el AlbumActivity)
+        album1.setOnClickListener(v -> {
+            Intent intent = new Intent(ArtistActivity.this, AlbumActivity.class);
+            intent.putExtra("album", txtAlbum1.getText().toString());
+            intent.putExtra("artist", artistName);
+            startActivity(intent);
+        });
+
+        album2.setOnClickListener(v -> {
+            Intent intent = new Intent(ArtistActivity.this, AlbumActivity.class);
+            intent.putExtra("album", txtAlbum2.getText().toString());
+            intent.putExtra("artist", artistName);
+            startActivity(intent);
+        });
 
         // comprovación del Artista
         if(artistName.equals("The Weeknd")) {
