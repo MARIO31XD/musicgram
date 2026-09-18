@@ -6,21 +6,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.AlbumActivity">
-
-<LinearLayout
+<ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:ignore="MissingConstraints">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtAlbumName"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
 
-</LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgAlbumCover"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/txtAlbumName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtAlbumArtist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtAlbumYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Songs"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="12dp" />
+
+        <LinearLayout
+            android:id="@+id/songsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </LinearLayout>
+
+
+</ScrollView>
+
 
 
 

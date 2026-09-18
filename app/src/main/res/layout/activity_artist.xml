@@ -45,7 +45,7 @@
                 android:id="@+id/txtMonthlyListeners"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Millones de oyentes mensuales"
+                android:text="monthly listeners"
                 android:textSize="15sp"
                 android:layout_marginTop="8dp" />
 
@@ -63,7 +63,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Populares"
+                android:text="Populars"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:layout_marginTop="28dp"
