@@ -20,8 +20,10 @@ public class SongActivity extends AppCompatActivity {
         setContentView(R.layout.activity_song);
 
         String songName = getIntent().getStringExtra("song");
+        String albumName = getIntent().getStringExtra("album");
+        String artistName = getIntent().getStringExtra("artist");
         TextView txtSongName =  findViewById(R.id.txtSongName);
-        
+
         txtSongName.setText(songName);
     }
 }
