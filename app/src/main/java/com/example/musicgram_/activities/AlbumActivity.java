@@ -25,6 +25,13 @@ public class AlbumActivity extends AppCompatActivity {
         String albumName = getIntent().getStringExtra("album");
         String artistName = getIntent().getStringExtra("artist");
 
+
+
+        if (albumName != null) {
+            albumName = albumName.trim();
+        }
+        final String finalAlbumName = albumName;
+
         LinearLayout songsContainer = findViewById(R.id.songsContainer);
         ImageView imgAlbumCover = findViewById(R.id.imgAlbumCover);
         TextView txtAlbumName = findViewById(R.id.txtAlbumName);
@@ -37,7 +44,7 @@ public class AlbumActivity extends AppCompatActivity {
         String [] songs = new String [0]; // Array de Songs (lista  inicial vacia)
 
         // comprovaciones de portada de Album
-        if (albumName.equals("After Hours")) {
+        if ("After Hours".equals(albumName)) {
 
             imgAlbumCover.setImageResource(R.drawable.after_hours);
             txtAlbumYear.setText("2020");
@@ -60,7 +67,7 @@ public class AlbumActivity extends AppCompatActivity {
 
             };
 
-        } else if (albumName.equals("Dawn FM")) {
+        }  else if ("Dawn FM".equals(albumName)) {
 
             imgAlbumCover.setImageResource(R.drawable.dawnfm);
             txtAlbumYear.setText("2022");
@@ -85,7 +92,7 @@ public class AlbumActivity extends AppCompatActivity {
 
             };
 
-        } else if (albumName.equals("Is This It")) {
+        } else if ("Is This It".equals(albumName)) {
 
             imgAlbumCover.setImageResource(R.drawable.isthisit);
             txtAlbumYear.setText("2001");
@@ -106,7 +113,7 @@ public class AlbumActivity extends AppCompatActivity {
             };
 
 
-        } else if (albumName.equals("The New Abnormal")) {
+        } else if ("The New Abnormal".equals(albumName)) {
 
             imgAlbumCover.setImageResource(R.drawable.strokes);
             txtAlbumYear.setText("2020");
@@ -124,7 +131,7 @@ public class AlbumActivity extends AppCompatActivity {
 
             };
 
-        } else if (albumName.equals("Thank U, Next")) {
+        } else if ("Thank U, Next".equals(albumName)) {
 
             imgAlbumCover.setImageResource(R.drawable.thanku);
             txtAlbumYear.setText("2019");
@@ -144,7 +151,7 @@ public class AlbumActivity extends AppCompatActivity {
                     "Break Up with Your Girlfriend, I'm Bored"
             };
 
-        } else if (albumName.equals("Positions")) {
+        } else if ("Positions".equals(albumName)) {
 
             imgAlbumCover.setImageResource(R.drawable.positions);
             txtAlbumYear.setText("2020");
@@ -180,7 +187,7 @@ public class AlbumActivity extends AppCompatActivity {
             songText.setOnClickListener(v -> {
                 Intent intent = new Intent(AlbumActivity.this , SongActivity.class);
                 intent.putExtra("song", song);
-                intent.putExtra("album", albumName);
+                intent.putExtra("album", finalAlbumName);
                 intent.putExtra("artist", artistName);
                 startActivity(intent);
 

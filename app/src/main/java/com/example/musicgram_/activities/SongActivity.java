@@ -21,6 +21,7 @@ public class SongActivity extends AppCompatActivity {
 
         String songName = getIntent().getStringExtra("song");
         TextView txtSongName =  findViewById(R.id.txtSongName);
+        
         txtSongName.setText(songName);
     }
 }

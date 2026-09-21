@@ -95,7 +95,7 @@ public class ArtistActivity extends AppCompatActivity {
             txtSong2.setText("▶  Last Nite");
             txtSong3.setText("▶  Someday");
 
-            txtAlbum1.setText("Is this it");
+            txtAlbum1.setText("Is This It");
             txtAlbum2.setText("The New Abnormal");
 
             imgAlbum1.setImageResource(R.drawable.isthisit);
@@ -114,7 +114,7 @@ public class ArtistActivity extends AppCompatActivity {
             txtSong2.setText("▶  thank u, next");
             txtSong3.setText("▶  Into You");
 
-            txtAlbum1.setText("Thank u, Next");
+            txtAlbum1.setText("Thank U, Next");
             txtAlbum2.setText("Positions");
 
             imgAlbum1.setImageResource(R.drawable.thanku);
