@@ -2,6 +2,8 @@ package com.example.musicgram_.activities;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -18,6 +20,10 @@ import com.example.musicgram_.R;
 public class SongActivity extends AppCompatActivity {
 
     private MediaPlayer mediaPlayer; // variable que guardará el Reproductor MediaPlayer
+    private Handler handler = new Handler(Looper.getMainLooper()); // para actualizar la barra y el tiempo
+
+    private SeekBar seekbar;
+    private TextView txtCurrentTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +39,8 @@ public class SongActivity extends AppCompatActivity {
         TextView txtSongArtist = findViewById(R.id.txtSongArtist);
         ImageView imgSongCover = findViewById(R.id.imgSongCover);
 
-        SeekBar seekbar = findViewById(R.id.seekBar);
-        TextView txtCurrentTime = findViewById(R.id.txtCurrentTime);
+        seekbar = findViewById(R.id.seekBar);
+        txtCurrentTime = findViewById(R.id.txtCurrentTime);
         TextView txtTotalTime = findViewById(R.id.txtTotalTime);
 
         // Button del reproductor MediaPlayer
@@ -70,21 +76,92 @@ public class SongActivity extends AppCompatActivity {
             imgSongCover.setImageResource(R.drawable.positions);
         }
 
-        mediaPlayer = MediaPlayer.create(this,R.raw.blinding_lights); // song mp4
+        mediaPlayer = MediaPlayer.create(this, R.raw.blinding_lights);
 
-        btnPlayPause.setOnClickListener(v -> {
-            if (mediaPlayer.isPlaying()) {
-                // se está reproduciendo? SI SI , se pausa
-                mediaPlayer.pause();
+        if (mediaPlayer != null) {
+
+            // Ponemos la duración de la canción en la barra (seekbar)
+            seekbar.setMax(mediaPlayer.getDuration());
+
+            // Mostramos la duración total
+            txtTotalTime.setText(formatTime(mediaPlayer.getDuration()));
+
+            btnPlayPause.setOnClickListener(v -> {
+
+                if (mediaPlayer.isPlaying()) {
+
+                    mediaPlayer.pause();
+                    btnPlayPause.setText("▶");
+
+                } else {
+
+                    mediaPlayer.start();
+                    btnPlayPause.setText("⏸");
+
+                    updateSeekBar();
+                }
+            });
+
+            // cuando la cancion termine
+            mediaPlayer.setOnCompletionListener(mp -> {
+
+                seekbar.setProgress(0);
+
+                txtCurrentTime.setText("0:00");
+
                 btnPlayPause.setText("▶");
-            } else {
-                // si no la reproduce y cambia
-                mediaPlayer.start();
-                btnPlayPause.setText("⏸");
-            }
+            });
 
-        });
+            // para arrastrar la barra
+            seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+                    if (fromUser && mediaPlayer != null) {
+
+                        mediaPlayer.seekTo(progress);
+
+                        txtCurrentTime.setText(formatTime(progress));
+                    }
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                }
+            });
+        }
 
 
     }
+
+    private void updateSeekBar() {
+
+        if (mediaPlayer != null) {
+
+            int currentPosition = mediaPlayer.getCurrentPosition();
+
+            seekbar.setProgress(currentPosition);
+
+            txtCurrentTime.setText(formatTime(currentPosition));
+
+            handler.postDelayed(this::updateSeekBar, 500);
+        }
+    }
+
+    private String formatTime(int milliseconds) {
+
+        int seconds = milliseconds / 1000;
+
+        int minutes = seconds / 60;
+
+        seconds = seconds % 60;
+
+        return String.format("%d:%02d", minutes, seconds);
+    }
+
 }
