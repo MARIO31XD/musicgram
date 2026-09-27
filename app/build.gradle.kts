@@ -1,3 +1,17 @@
+import java.util.Properties
+
+val secrets = Properties()
+val secretsFile = rootProject.file("secrets.properties")
+
+if (secretsFile.exists()) {
+    secretsFile.inputStream().use {
+        secrets.load(it)
+    }
+}
+
+val youtubeApiKey = secrets.getProperty("YOUTUBE_API_KEY", "")
+
+
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -14,6 +28,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField(
+            "String",
+            "YOUTUBE_API_KEY",
+            "\"$youtubeApiKey\""
+        )
+
     }
 
     buildTypes {
@@ -25,6 +46,12 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
