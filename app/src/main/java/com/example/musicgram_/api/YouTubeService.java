@@ -80,13 +80,46 @@ public class YouTubeService {
 
                 connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
+
+                // Identificamos nuestra aplicación Android
+                connection.setRequestProperty(
+                        "X-Android-Package",
+                        "com.example.musicgram_"
+                );
+
+                connection.setRequestProperty(
+                        "X-Android-Cert",
+                        "6C79929FA320DB9D202D2D960EE5A65A46DDF059"
+                );
+
                 connection.setConnectTimeout(10000);
                 connection.setReadTimeout(10000);
 
                 int responseCode = connection.getResponseCode();
 
                 if (responseCode != 200) {
-                    throw new Exception("Error HTTP: " + responseCode);
+
+                    InputStream errorStream = connection.getErrorStream();
+
+                    StringBuilder errorResponse = new StringBuilder();
+
+                    if (errorStream != null) {
+                        BufferedReader errorReader = new BufferedReader(
+                                new InputStreamReader(errorStream, StandardCharsets.UTF_8)
+                        );
+
+                        String errorLine;
+
+                        while ((errorLine = errorReader.readLine()) != null) {
+                            errorResponse.append(errorLine);
+                        }
+
+                        errorReader.close();
+                    }
+
+                    throw new Exception(
+                            "Error HTTP: " + responseCode + " - " + errorResponse
+                    );
                 }
 
                 InputStream inputStream = connection.getInputStream();
