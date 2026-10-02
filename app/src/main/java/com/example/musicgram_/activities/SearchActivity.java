@@ -5,12 +5,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.content.Intent;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.widget.ImageView;
+
+import android.os.Handler;
+import android.os.Looper;
+
+import java.net.URL;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import com.example.musicgram_.R;
 import com.example.musicgram_.api.YouTubeService;
@@ -21,6 +34,9 @@ public class SearchActivity extends AppCompatActivity {
     private Button btnSearch;
     private TextView txtSearchStatus;
     private LinearLayout resultsContainer;
+
+    private ExecutorService executor = Executors.newFixedThreadPool(3); // permite Descargar las images en segundo plano sin bloquear la app
+    private Handler mainHandler = new Handler(Looper.getMainLooper()); // Handler nos permite mostrar las imagenes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,14 +83,71 @@ public class SearchActivity extends AppCompatActivity {
 
                     for (YouTubeService.VideoResult video : results) {
 
-                        TextView resultView = new TextView(SearchActivity.this);
+                        // Creamos una fila horizontal
+                        LinearLayout row = new LinearLayout(SearchActivity.this);
+                        row.setOrientation(LinearLayout.HORIZONTAL);
+                        row.setPadding(12, 12, 12, 12);
 
-                        resultView.setText(video.title);
-                        resultView.setTextColor(0xFFFFFFFF);
-                        resultView.setTextSize(18);
-                        resultView.setPadding(12, 20, 12, 20);
+                        // Creamos la imagen de la miniatura del video
+                        ImageView thumbnail = new ImageView(SearchActivity.this);
 
-                        resultsContainer.addView(resultView);
+                        LinearLayout.LayoutParams imageParams =
+                                new LinearLayout.LayoutParams(120, 90);
+
+                        thumbnail.setLayoutParams(imageParams);
+                        thumbnail.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+                        // Creamos el título del vídeo
+                        TextView title = new TextView(SearchActivity.this);
+
+                        title.setText(video.title);
+                        title.setTextColor(0xFFFFFFFF);
+                        title.setTextSize(16);
+                        title.setPadding(16, 0, 0, 0);
+                        title.setGravity(android.view.Gravity.CENTER_VERTICAL);
+
+                        // Añadimos la imagen y el título a la fila
+                        row.addView(thumbnail);
+                        row.addView(title);
+
+                        // Al pulsar en la fila, abrimos el reproductor
+                        row.setOnClickListener(v -> {
+                            Intent intent = new Intent(
+                                    SearchActivity.this,
+                                    VideoActivity.class
+                            );
+
+                            intent.putExtra("videoId", video.videoId);
+                            intent.putExtra("videoTitle", video.title);
+
+                            startActivity(intent);
+                        });
+
+
+
+                        // Añadimos la fila a los resultados
+                        resultsContainer.addView(row);
+
+                        // Descargamos la miniatura en segundo plano
+                        executor.execute(() -> {
+                            try {
+                                URL url = new URL(video.thumbnailUrl);
+
+                                Bitmap bitmap = BitmapFactory.decodeStream(
+                                        url.openConnection().getInputStream()
+                                );
+
+                                // Mostramos la imagen en el hilo principal
+                                mainHandler.post(() -> {
+                                    if (bitmap != null) {
+                                        thumbnail.setImageBitmap(bitmap);
+                                    }
+                                });
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        });
                     }
                 }
 

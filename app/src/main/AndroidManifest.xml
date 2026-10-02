@@ -65,6 +65,10 @@
             android:name=".activities.SongActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".activities.VideoActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>
