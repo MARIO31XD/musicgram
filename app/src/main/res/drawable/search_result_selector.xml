@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Cuando pulsamos la tarjeta -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+
+            <solid android:color="#353535"/>
+
+            <corners android:radius="16dp"/>
+
+            <padding
+                android:left="4dp"
+                android:top="4dp"
+                android:right="4dp"
+                android:bottom="4dp"/>
+
+        </shape>
+    </item>
+
+    <!-- Estado normal -->
+    <item>
+        <shape android:shape="rectangle">
+
+            <solid android:color="#1E1E1E"/>
+
+            <corners android:radius="16dp"/>
+
+            <padding
+                android:left="4dp"
+                android:top="4dp"
+                android:right="4dp"
+                android:bottom="4dp"/>
+
+        </shape>
+    </item>
+
+</selector>

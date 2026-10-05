@@ -83,12 +83,27 @@ public class SearchActivity extends AppCompatActivity {
 
                     for (YouTubeService.VideoResult video : results) {
 
-                        // Creamos una fila horizontal
+                        // Creamos la tarjeta principal
                         LinearLayout row = new LinearLayout(SearchActivity.this);
                         row.setOrientation(LinearLayout.HORIZONTAL);
                         row.setPadding(12, 12, 12, 12);
+                        row.setGravity(android.view.Gravity.CENTER_VERTICAL);
+                        row.setClickable(true);
+                        row.setFocusable(true);
+                        row.setBackgroundResource(R.drawable.search_result_selector);
 
-                        // Creamos la imagen de la miniatura del video
+                        LinearLayout.LayoutParams rowParams =
+                                new LinearLayout.LayoutParams(
+                                        LinearLayout.LayoutParams.MATCH_PARENT,
+                                        LinearLayout.LayoutParams.WRAP_CONTENT
+                                );
+
+                        rowParams.setMargins(0, 0, 0, 12);
+
+                        row.setLayoutParams(rowParams);
+
+
+                        // MINIATURA
                         ImageView thumbnail = new ImageView(SearchActivity.this);
 
                         LinearLayout.LayoutParams imageParams =
@@ -97,21 +112,52 @@ public class SearchActivity extends AppCompatActivity {
                         thumbnail.setLayoutParams(imageParams);
                         thumbnail.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
-                        // Creamos el título del vídeo
+                        // INFO CONTAINER
+                        LinearLayout infoContainer =
+                                new LinearLayout(SearchActivity.this);
+
+                        infoContainer.setOrientation(LinearLayout.VERTICAL);
+
+                        LinearLayout.LayoutParams infoParams =
+                                new LinearLayout.LayoutParams(
+                                        0,
+                                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                                        1
+                                );
+
+                        infoParams.setMargins(16, 0, 0, 0);
+
+                        infoContainer.setLayoutParams(infoParams);
+
+
+                        // TITULO
                         TextView title = new TextView(SearchActivity.this);
 
                         title.setText(video.title);
                         title.setTextColor(0xFFFFFFFF);
                         title.setTextSize(16);
-                        title.setPadding(16, 0, 0, 0);
-                        title.setGravity(android.view.Gravity.CENTER_VERTICAL);
+                        title.setMaxLines(3);
 
-                        // Añadimos la imagen y el título a la fila
+
+                        // TEXTO SECUNDARIO
+                        TextView source = new TextView(SearchActivity.this);
+
+                        source.setText("Vídeo de YouTube");
+                        source.setTextColor(0xFFAAAAAA);
+                        source.setTextSize(13);
+                        source.setPadding(0, 6, 0, 0);
+
+                        // AÑADIR TEXTOS A LA TARJETA
+                        infoContainer.addView(title);
+                        infoContainer.addView(source);
+
                         row.addView(thumbnail);
-                        row.addView(title);
+                        row.addView(infoContainer);
 
-                        // Al pulsar en la fila, abrimos el reproductor
+
+                        // CLIC EN LA TARJETA
                         row.setOnClickListener(v -> {
+
                             Intent intent = new Intent(
                                     SearchActivity.this,
                                     VideoActivity.class
@@ -123,25 +169,27 @@ public class SearchActivity extends AppCompatActivity {
                             startActivity(intent);
                         });
 
-
-
-                        // Añadimos la fila a los resultados
+                        // Añadimos la tarjeta a la lista
                         resultsContainer.addView(row);
 
-                        // Descargamos la miniatura en segundo plano
+
+                        // DESCARGAMOS LA MINIATURA
                         executor.execute(() -> {
+
                             try {
+
                                 URL url = new URL(video.thumbnailUrl);
 
                                 Bitmap bitmap = BitmapFactory.decodeStream(
                                         url.openConnection().getInputStream()
                                 );
 
-                                // Mostramos la imagen en el hilo principal
                                 mainHandler.post(() -> {
+
                                     if (bitmap != null) {
                                         thumbnail.setImageBitmap(bitmap);
                                     }
+
                                 });
 
                             } catch (Exception e) {
