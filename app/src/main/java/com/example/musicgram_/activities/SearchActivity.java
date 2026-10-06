@@ -35,6 +35,12 @@ public class SearchActivity extends AppCompatActivity {
     private TextView txtSearchStatus;
     private LinearLayout resultsContainer;
 
+    private LinearLayout miniPlayer;
+    private ImageView miniPlayerImage;
+    private TextView miniPlayerTitle;
+    private TextView miniPlayerArtist;
+    private Button btnMiniPlayPause;
+
     private ExecutorService executor = Executors.newFixedThreadPool(3); // permite Descargar las images en segundo plano sin bloquear la app
     private Handler mainHandler = new Handler(Looper.getMainLooper()); // Handler nos permite mostrar las imagenes
 
@@ -48,6 +54,17 @@ public class SearchActivity extends AppCompatActivity {
         btnSearch = findViewById(R.id.btnSearch);
         txtSearchStatus = findViewById(R.id.txtSearchStatus);
         resultsContainer = findViewById(R.id.resultsContainer);
+
+        miniPlayer = findViewById(R.id.miniPlayer);
+        miniPlayerImage = findViewById(R.id.miniPlayerImage);
+        miniPlayerTitle = findViewById(R.id.miniPlayerTitle);
+        miniPlayerArtist = findViewById(R.id.miniPlayerArtist);
+        btnMiniPlayPause = findViewById(R.id.btnMiniPlayPause);
+
+        // PRUEBA
+
+
+
 
         btnSearch.setOnClickListener(v -> {
             // obtener y guardar el texto que escribirá el usuario
@@ -157,6 +174,12 @@ public class SearchActivity extends AppCompatActivity {
 
                         // CLIC EN LA TARJETA
                         row.setOnClickListener(v -> {
+
+                            miniPlayer.setVisibility(View.VISIBLE);
+
+                            miniPlayerTitle.setText(video.title);
+                            miniPlayerArtist.setText("YouTube");
+                            btnMiniPlayPause.setText("▶");
 
                             Intent intent = new Intent(
                                     SearchActivity.this,
