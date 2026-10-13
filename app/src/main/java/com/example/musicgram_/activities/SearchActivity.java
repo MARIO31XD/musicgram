@@ -42,6 +42,8 @@ public class SearchActivity extends AppCompatActivity {
     private TextView miniPlayerArtist;
     private Button btnMiniPlayPause;
 
+    private boolean isMiniPlayerPlaying;
+
     private ExecutorService executor = Executors.newFixedThreadPool(3); // permite Descargar las images en segundo plano sin bloquear la app
     private Handler mainHandler = new Handler(Looper.getMainLooper()); // Handler nos permite mostrar las imagenes
 
@@ -62,6 +64,18 @@ public class SearchActivity extends AppCompatActivity {
         miniPlayerArtist = findViewById(R.id.miniPlayerArtist);
         btnMiniPlayPause = findViewById(R.id.btnMiniPlayPause);
 
+
+        btnMiniPlayPause.setOnClickListener(v -> {
+
+            if (isMiniPlayerPlaying) {
+                isMiniPlayerPlaying = false;
+                btnMiniPlayPause.setText("▶");
+            } else {
+                isMiniPlayerPlaying = true;
+                btnMiniPlayPause.setText("❚❚");
+            }
+
+        });
 
 
         btnSearch.setOnClickListener(v -> {
@@ -178,6 +192,7 @@ public class SearchActivity extends AppCompatActivity {
                             miniPlayerTitle.setText(video.title);
                             miniPlayerImage.setImageDrawable(null);
                             miniPlayerArtist.setText("YouTube");
+                            isMiniPlayerPlaying = false;
                             btnMiniPlayPause.setText("▶");
 
                             // Download la miniatura del video
