@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.os.Handler;
 import android.os.Looper;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -60,9 +61,6 @@ public class SearchActivity extends AppCompatActivity {
         miniPlayerTitle = findViewById(R.id.miniPlayerTitle);
         miniPlayerArtist = findViewById(R.id.miniPlayerArtist);
         btnMiniPlayPause = findViewById(R.id.btnMiniPlayPause);
-
-        // PRUEBA
-
 
 
 
@@ -178,8 +176,31 @@ public class SearchActivity extends AppCompatActivity {
                             miniPlayer.setVisibility(View.VISIBLE);
 
                             miniPlayerTitle.setText(video.title);
+                            miniPlayerImage.setImageDrawable(null);
                             miniPlayerArtist.setText("YouTube");
                             btnMiniPlayPause.setText("▶");
+
+                            // Download la miniatura del video
+                            executor.execute(() -> {
+                                try {
+                                    URL url = new URL(video.thumbnailUrl);
+
+                                    Bitmap bitmap = BitmapFactory.decodeStream(
+                                            url.openConnection().getInputStream()
+                                    );
+
+                                    mainHandler.post(() -> {
+                                        if (bitmap != null) {
+                                            miniPlayerImage.setImageBitmap(bitmap);
+                                        }
+                                    });
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            });
+
+
 
                             Intent intent = new Intent(
                                     SearchActivity.this,
